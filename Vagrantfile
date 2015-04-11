@@ -20,6 +20,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
+
     apt-get update
     apt-get install -y git tmux vim-nox golang
     apt-get install -y libffi-dev zlib1g-dev libssl-dev libreadline-dev
@@ -37,6 +38,8 @@ Vagrant.configure(2) do |config|
   SHELL
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
+
+    mkdir -p $HOME/go/{src,bin}
 
     git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
