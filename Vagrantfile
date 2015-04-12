@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
     virtualbox.cpus = 8
   end
 
-  config.vm.provider "hosts" do |host|
+  config.vm.provision "hosts" do |host|
     host.add_host "192.168.50.301", ["#{VM_NAME}.local"]
   end
 
@@ -63,6 +63,24 @@ Vagrant.configure(2) do |config|
     homeshick link -f
 
     vim -u ~/.vimrc.d/plugins.vim +PluginInstall +qall
+
+  SHELL
+
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+
+    mkdir -p $HOME/code/#{VM_NAME}
+    cd $HOME/code/#{VM_NAME}
+
+    git clone git@github.com:site-builder/frontend.git
+    git clone git@github.com:site-builder/registrar.git
+
+    cd frontend
+    rbenv install
+    rbenv rehash
+    gem install bundler
+    bundle install
+
+    go get github.com/site-builder/fetcher
 
   SHELL
 
