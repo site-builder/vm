@@ -47,6 +47,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
 
     mkdir -p $HOME/go/{src,bin}
+    go get github.com/mattn/goreman
 
     git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
     git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
