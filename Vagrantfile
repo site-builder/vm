@@ -17,10 +17,6 @@ Vagrant.configure(2) do |config|
     virtualbox.cpus = 8
   end
 
-  config.vm.provision "hosts" do |host|
-    host.add_host "192.168.50.301", ["#{VM_NAME}.local"]
-  end
-
   config.vm.provision "shell", inline: <<-SHELL
 
     add-apt-repository -y ppa:webupd8team/java
