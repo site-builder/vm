@@ -9,6 +9,8 @@ Vagrant.configure(2) do |config|
 
   config.ssh.forward_agent = true
 
+  config.vm.network "private_network", ip: "192.168.50.201"
+
   config.vm.provider 'virtualbox' do |virtualbox|
     virtualbox.name = VM_NAME
     virtualbox.memory = 16384
