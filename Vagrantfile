@@ -75,6 +75,7 @@ Vagrant.configure(2) do |config|
     cd frontend
     rbenv install
     rbenv rehash
+    gem install jekyll
     gem install bundler
     bundle install
 
