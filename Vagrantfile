@@ -79,7 +79,8 @@ Vagrant.configure(2) do |config|
     gem install bundler
     bundle install
 
-    go get github.com/site-builder/fetcher
+    go get github.com/site-builder/worker
+
 
   SHELL
 
